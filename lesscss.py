@@ -3,14 +3,13 @@
 # (C) 2012, ZOPYX Ltd.
 ################################################################
 
-import sys
 import os
-import time
 import logging
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-from logger import LOG
+
+LOG = logging.getLogger('lesscss')
 
 class MyHandler(PatternMatchingEventHandler):
 
@@ -32,7 +31,6 @@ class MyHandler(PatternMatchingEventHandler):
             os.unlink(dest_path)
 
 
-    
 def start():
     event_handler = MyHandler(patterns=['*.less'], ignore_directories=True)
     observer = Observer()
